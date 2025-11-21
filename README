@@ -1,0 +1,35 @@
+# Chrome Guard
+
+Chrome Guard is a small desktop helper that:
+
+- Launches Google Chrome with a low latency profile and flags
+- Monitors Chrome CPU usage in the background
+- Shows live meters for Chrome CPU usage
+- Logs alerts when a specific Chrome process (GPU, tab renderer, extension, and so on) causes sustained spikes
+
+It uses a Tkinter UI so you can type a URL and open Chrome from the app instead of the CLI.
+
+---
+
+## Project layout
+
+Expected structure:
+
+chrome-guard/
+README.md
+requirements.txt
+
+chrome_guard/
+**init**.py
+config.py
+launcher.py
+monitor.py
+notifications.py
+ui.py
+utils/
+**init**.py
+process_utils.py
+
+scripts/
+run_gui.py
+run_monitor_only.py

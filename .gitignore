@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pkl
+*.egg-info/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs and local data
+*.log
+*.tmp
+*.swp
+
+# Pyinstaller / build artifacts
+build/
+dist/
+*.spec
+
+# Coverage / test artifacts
+htmlcov/
+.coverage*
+.cache/
+.pytest_cache/
+
+# Local config
+.env
+.env.*
