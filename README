@@ -1,64 +1,63 @@
 # Chrome Guard
 
-Chrome Guard is a lightweight desktop utility that launches Google Chrome using a low-latency profile and continuously monitors how Chrome uses your system resources. It provides a simple Tkinter desktop UI that displays real-time CPU usage, identifies heavy Chrome subprocesses, and sends alerts when sustained spikes occur.
+Chrome Guard is a lightweight desktop tool that launches Google Chrome in a dedicated low-latency profile and monitors how the browser uses system resources. It shows real-time CPU usage for Chrome, highlights which subprocess is causing load, and estimates per-tab activity using the Chrome DevTools Protocol. A simple Tkinter interface lets you open URLs and watch live metrics without using the command line.
 
 ## Features
 
-* Launch Chrome with an optimized low-latency profile
-* Real-time total CPU usage from all Chrome processes
-* Identify the single Chrome subprocess using the most CPU
-* Estimate per-tab CPU contribution through the Chrome DevTools Protocol
-* Clean Tkinter UI for meters, tab list, alerts, and URL launching
-* Alerts for sustained CPU spikes caused by specific Chrome components
-* Open URLs directly from the app without needing the CLI
+* Launches Chrome with a low-latency, isolated user profile
+* Tracks total CPU usage across all Chrome processes
+* Identifies the highest-CPU Chrome subprocess (tab renderer, extension, GPU coordinator, utility, and so on)
+* Estimates per-tab CPU contribution via the Chrome DevTools Protocol
+* Shows live meters and a tab list in a desktop UI
+* Logs alerts when Chrome causes sustained CPU spikes
 
-## Project Structure
+## Project layout
 
 chrome-guard/
-README.md
-requirements.txt
+• README.md
+• requirements.txt
+
 chrome_guard/
- **init**.py
- config.py
- launcher.py
- monitor.py
- notifications.py
- ui.py
- utils/
-  **init**.py
-  process_utils.py
-  gpu_utils.py
+• **init**.py
+• config.py
+• launcher.py
+• monitor.py
+• notifications.py
+• ui.py
+• utils/
+• **init**.py
+• process_utils.py
+
 scripts/
- run_gui.py
- run_monitor_only.py
+• run_gui.py
+• run_monitor_only.py
 
 ## Installation
 
-### Create a virtual environment
+1. Create a virtual environment
+   python3 -m venv .venv
 
-python3 -m venv .venv
+2. Activate the virtual environment
+   source .venv/bin/activate
 
-### Activate it
-
-source .venv/bin/activate
-
-### Install dependencies
-
-pip install -r requirements.txt
+3. Install dependencies
+   pip install -r requirements.txt
 
 ## Running Chrome Guard
 
-### Launch the full desktop UI
-
+To start the desktop UI:
 python3 scripts/run_gui.py
 
-### Run the monitor alone (logs only, no UI)
+This opens the Chrome Guard window. Enter a URL and click the button to launch Chrome and begin monitoring.
 
+To run the monitor without the UI:
 python3 scripts/run_monitor_only.py
+
+This prints Chrome CPU statistics and alerts to the terminal.
 
 ## Configuration
 
-Environment variables can override defaults in config.py:
+You can override default settings using environment variables:
 
 CHROME_GUARD_CHROME_PATH
 CHROME_GUARD_CPU_TOTAL
@@ -66,10 +65,4 @@ CHROME_GUARD_CPU_SINGLE
 CHROME_GUARD_POLL_INTERVAL
 CHROME_GUARD_SUSTAINED_HITS
 
-These are optional. The program runs out-of-the-box using sensible defaults.
-
-## Platform Notes
-
-* Works on macOS and Linux
-* Uses remote debugging on port 9222 for per-tab metrics
-* Requires Chrome or Chromium installed locally
+Defaults for these values are defined in config.py.
