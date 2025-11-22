@@ -1,35 +1,77 @@
 # Chrome Guard
 
-Chrome Guard is a small desktop helper that:
+Chrome Guard is a lightweight desktop tool that launches Google Chrome in a dedicated low-latency profile and monitors how the browser uses your system’s resources. It displays real-time CPU usage for Chrome’s processes, highlights heavy tab renderers, and logs alerts when usage stays above thresholds.
 
-- Launches Google Chrome with a low latency profile and flags
-- Monitors Chrome CPU usage in the background
-- Shows live meters for Chrome CPU usage
-- Logs alerts when a specific Chrome process (GPU, tab renderer, extension, and so on) causes sustained spikes
+A simple Tkinter UI lets you open Chrome directly from the app and watch live metrics.
 
-It uses a Tkinter UI so you can type a URL and open Chrome from the app instead of the CLI.
+## Features
 
----
+* Launches Chrome with an isolated performance profile
+* Tracks total Chrome CPU usage and highest individual process
+* Shows per-tab CPU estimates using the Chrome DevTools Protocol
+* Displays live CPU meters in a desktop UI
+* Logs alerts when CPU usage stays high for multiple intervals
 
-## Project layout
+## Project Layout
 
-Expected structure:
-
+```
 chrome-guard/
-README.md
-requirements.txt
+    README.md
+    requirements.txt
 
-chrome_guard/
-**init**.py
-config.py
-launcher.py
-monitor.py
-notifications.py
-ui.py
-utils/
-**init**.py
-process_utils.py
+    chrome_guard/
+        __init__.py
+        config.py
+        launcher.py
+        monitor.py
+        notifications.py
+        ui.py
+        utils/
+            __init__.py
+            process_utils.py
+            gpu_utils.py
 
-scripts/
-run_gui.py
-run_monitor_only.py
+    scripts/
+        run_gui.py
+        run_monitor_only.py
+```
+
+## Installation
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+## Running the App
+
+### Launch the UI
+
+```
+python3 scripts/run_gui.py
+```
+
+This opens the Tkinter interface where you can enter a URL and view live metrics.
+
+### Monitor Only
+
+```
+python3 scripts/run_monitor_only.py
+```
+
+Prints Chrome CPU metrics to the terminal without the UI.
+
+## Configuration
+
+You can override defaults through environment variables:
+
+```
+CHROME_GUARD_CHROME_PATH
+CHROME_GUARD_CPU_TOTAL
+CHROME_GUARD_CPU_SINGLE
+CHROME_GUARD_POLL_INTERVAL
+CHROME_GUARD_SUSTAINED_HITS
+```
+
+Defaults are set in `config.py`.
