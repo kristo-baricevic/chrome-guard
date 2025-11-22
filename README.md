@@ -60,9 +60,13 @@ This prints Chrome CPU statistics and alerts to the terminal.
 You can override default settings using environment variables:
 
 CHROME_GUARD_CHROME_PATH
+
 CHROME_GUARD_CPU_TOTAL
+
 CHROME_GUARD_CPU_SINGLE
+
 CHROME_GUARD_POLL_INTERVAL
+
 CHROME_GUARD_SUSTAINED_HITS
 
 Defaults for these values are defined in config.py.
