@@ -1,4 +1,4 @@
-Chrome Guard
+# Chrome Guard
 
 Chrome Guard is a lightweight desktop helper that launches Google Chrome using a dedicated low-latency profile and monitors how the browser uses system resources. It shows real-time CPU usage, identifies which Chrome process is causing load, and estimates per-tab activity using the Chrome DevTools Protocol. A simple Tkinter interface lets you enter a URL and launch Chrome directly from the app.
 
