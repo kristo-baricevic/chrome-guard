@@ -1,23 +1,29 @@
-# Chrome Guard
+Chrome Guard
 
-Chrome Guard is a lightweight desktop helper that launches Google Chrome using a dedicated low-latency profile and monitors how the browser uses system resources. It shows real-time CPU usage, identifies which Chrome process is causing load, and estimates per-tab activity using the Chrome DevTools Protocol. A simple Tkinter interface lets you enter a URL and launch Chrome directly from the app.
+Chrome Guard is a lightweight desktop tool that launches Google Chrome with a dedicated low-latency profile and monitors how the browser uses system resources. It provides a simple Tkinter interface that shows real-time Chrome CPU activity, identifies heavy processes (tab renderers, extensions, GPU coordination process, utilities), and highlights potential performance spikes.
 
 Features
 
-• Launch Chrome with performance-optimized flags
-• Monitor total Chrome CPU usage
-• Identify the highest-CPU Chrome process (tab renderer, extension process, GPU process, utility process, etc.)
-• Display estimated per-tab CPU contribution
-• Show live meters for Chrome CPU usage
-• Log alerts when Chrome processes create sustained load
-• Provide a one-window desktop UI for launching and observing Chrome
+Launch Chrome with optimized flags for lower latency
+
+Monitor total Chrome CPU usage
+
+Identify the highest-CPU Chrome process
+
+Display estimated per-tab CPU contribution using the Chrome DevTools Protocol
+
+Show real-time usage meters in the UI
+
+Generate alerts when Chrome processes exhibit sustained high load
+
+Simple desktop UI to launch and observe Chrome
 
 Project Structure
 
 chrome-guard/
  README.md
  requirements.txt
-
+ 
  chrome_guard/
   init.py
   config.py
@@ -29,7 +35,7 @@ chrome-guard/
    init.py
    process_utils.py
    gpu_utils.py
-
+ 
  scripts/
   run_gui.py
   run_monitor_only.py
@@ -47,24 +53,22 @@ pip install -r requirements.txt
 
 Running the App
 
-To start the UI:
+To open the UI:
 python3 scripts/run_gui.py
 
-This opens the Chrome Guard window where you can type a URL and monitor Chrome’s activity in real time.
-
-To run the monitor without the UI:
+To run only the background Chrome monitor in the terminal:
 python3 scripts/run_monitor_only.py
-
-This prints Chrome CPU statistics in the terminal.
 
 Configuration
 
-You can override defaults using environment variables such as:
+The following environment variables can override defaults from config.py:
 
 CHROME_GUARD_CHROME_PATH
-CHROME_GUARD_CPU_TOTAL
-CHROME_GUARD_CPU_SINGLE
-CHROME_GUARD_POLL_INTERVAL
-CHROME_GUARD_SUSTAINED_HITS
 
-Default values are defined in config.py.
+CHROME_GUARD_CPU_TOTAL
+
+CHROME_GUARD_CPU_SINGLE
+
+CHROME_GUARD_POLL_INTERVAL
+
+CHROME_GUARD_SUSTAINED_HITS
