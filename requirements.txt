@@ -1,1 +1,4 @@
 psutil
+requests
+websockets
+tk
