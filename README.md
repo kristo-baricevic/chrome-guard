@@ -14,22 +14,36 @@ Chrome Guard is a lightweight desktop tool that launches Google Chrome in a dedi
 ## Project layout
 
 chrome-guard/
+
 • README.md
+
 • requirements.txt
 
 chrome_guard/
+
 • **init**.py
+
 • config.py
+
 • launcher.py
+
 • monitor.py
+
 • notifications.py
+
 • ui.py
+
 • utils/
+
 • **init**.py
+
 • process_utils.py
 
+
 scripts/
+
 • run_gui.py
+
 • run_monitor_only.py
 
 ## Installation
